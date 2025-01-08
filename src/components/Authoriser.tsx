@@ -106,12 +106,12 @@ function Authoriser() {
         <img src={googleIcon} alt="Google Icon" />
         <p>{isLogin ? 'Login' : 'Sign Up'} with Google</p>
       </button>
-      <button
+      {/* <button
       onClick={()=>handleGoogleLogin()}
       className=" w-full border rounded-md py-2 flex flex-row justify-center gap-2">
         <img src={githubIcon} alt="Google Icon" />
         <p>{isLogin ? 'Login' : 'Sign Up'} with Github</p>
-      </button>
+      </button> */}
       {/* <form className="space-y-4">
         {!isLogin && (
           <input
