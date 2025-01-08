@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react"
 import {firebaseAuth, firebaseDb} from '../firebaseConfig'
-import { createUserWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from "firebase/auth"
+import {  GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import googleIcon from '../assets/google.svg'
 import githubIcon from '../assets/githubIcon.svg'
-import { initializeApp } from "firebase/app"
 import { useNavigate } from "react-router"
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore"
+import { doc, getDoc, setDoc } from "firebase/firestore"
 
 function Authoriser() {
 
@@ -13,9 +12,9 @@ function Authoriser() {
 
   const [loading, setLoading] = useState<boolean>(true)
   const [isLogin, setIsLogin] = useState(true)
-  const [email, setEmail] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
-  const [fullName, setFullName] = useState<string>('')
+  // const [email, setEmail] = useState<string>('')
+  // const [password, setPassword] = useState<string>('')
+  // const [fullName, setFullName] = useState<string>('')
   const [userType, setUserType] = useState<string>('founder')
 
 
@@ -64,7 +63,7 @@ function Authoriser() {
       if(isLogin){
         const provider = new GoogleAuthProvider();
         signInWithPopup(firebaseAuth, provider)
-        .then(async (response)=> {
+        .then(async ()=> {
           // console.log(response)
           checkAndCreateUserDocument()
           navigate("/profile")

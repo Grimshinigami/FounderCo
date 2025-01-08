@@ -24,7 +24,7 @@ function Header() {
     }
     else {
       firebaseAuth.signOut()
-      .then((response)=>{
+      .then(()=>{
         setLoggedIn(false)
         navigate('/')
       })
@@ -43,6 +43,9 @@ function Header() {
         <div className="space-x-4">
           <a href="/listings" className="text-gray-600 hover:text-indigo-600">
             Listings
+          </a>
+          <a href="/mylistings" className="text-gray-600 hover:text-indigo-600">
+            My Listings
           </a>
           <a href="/profile" className="text-gray-600 hover:text-indigo-600">
             Profile

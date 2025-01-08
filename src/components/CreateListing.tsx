@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { firebaseAuth, firebaseDb } from "../firebaseConfig"
 import { redirect } from "react-router"
-import { addDoc, collection, doc, getDoc, setDoc } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc } from "firebase/firestore"
 
 function CreateListing() {
 

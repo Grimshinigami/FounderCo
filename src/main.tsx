@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/auth" element={<Authoriser/>}/>
           <Route path='/createlisting' element={<CreateListing/>}/>
           <Route path="/mylistings" element={<MyListings/>}/>
-          <Route path="/currentlisting" element={<CurrentListing/>}/>
+          <Route path="/currentlisting/:listingId" element={<CurrentListing/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

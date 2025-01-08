@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import { doc, getDoc } from "firebase/firestore"
 import { firebaseDb } from "@/firebaseConfig"
+import { useParams } from "react-router"
 
 
 function CurrentListing() {
@@ -30,25 +31,28 @@ function CurrentListing() {
     })
     const [loading, setLoading] = useState<boolean>(true)
     
-
+    const {listingId} = useParams();
+    
     async function getListings(){
         // const docRef = doc(firebaseDb,'listings')
-        const listingId = JSON.stringify(localStorage.getItem('myCurrentListing')||"")
+        
         console.log(listingId)
-        const docRef = doc(firebaseDb,'listings',listingId)
-        const docSnap = await getDoc(docRef)
+        // const docRef = doc(firebaseDb,'listings',listingId);
+        const docSnap = await getDoc(doc(firebaseDb,'listings',listingId || ""))
 
         console.log(docSnap.data())
         // console.log(allListings)
-        setListings({
-            id:docSnap.id,
-            heading: docSnap.data().heading,
-            companyName: docSnap.data().companyName,
-            description: docSnap.data().description,
-            compensation: docSnap.data().compensation,
-            equity: docSnap.data().equity,
-            applications: docSnap.data().applications
-        })
+        if(docSnap.exists()){
+            setListings({
+                id:docSnap.id,
+                heading: docSnap.data().heading,
+                companyName: docSnap.data().companyName,
+                description: docSnap.data().description,
+                compensation: docSnap.data().compensation,
+                equity: docSnap.data().equity,
+                applications: docSnap.data().applications
+            })
+        }
         setLoading(false)
 
     }

@@ -1,4 +1,3 @@
-import Listing from "./Listing"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
@@ -6,7 +5,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { firebaseAuth, firebaseDb } from "@/firebaseConfig"
-import { collection, deleteDoc, doc, getDoc, getDocs, query, updateDoc, where } from "firebase/firestore"
+import { collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
 import { redirect, useNavigate } from "react-router"
 
@@ -24,17 +23,6 @@ function MyListings() {
       const navigate = useNavigate();
 
     const [loading, setLoading] = useState<boolean>(true)
-
-    const ls:Listing = {
-        id:'1',
-        heading:"ALAKJFI",
-        companyName:"dsfklsdjf",
-        description:"klfsdfj",
-        compensation: "dfjsdlkfsd",
-        equity: "6%",
-        applications: 2
-    }
-
 
 
     const [listings, setListings] = useState<Listing[]>([])
@@ -121,8 +109,8 @@ function MyListings() {
 
     function viewHandler(listing:Listing){
         console.log("View applications clicked")
-        localStorage.setItem('myCurrentListing',listing.id)
-        navigate('/currentlisting')
+        // localStorage.setItem('myCurrentListing',listing.id)
+        navigate(`/currentlisting/${listing.id}`)
     }
 
     
@@ -139,7 +127,7 @@ function MyListings() {
     <div className=" w-full h-full flex flex-col px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">My Listings</h1>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {listings.map((listing,ind) => (
+        {listings.map((listing) => (
           <Card key={listing.id}>
             <CardHeader>
               <CardTitle>{listing.heading}</CardTitle>

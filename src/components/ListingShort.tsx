@@ -1,12 +1,14 @@
-import { redirect } from "react-router"
+import { useNavigate } from "react-router"
 
 function ListingShort({lId,title,compensation,equity=""}:
   {lId:string,title:string,compensation:string,equity:string}
 ) {
 
+  const navigate = useNavigate();
+
   function handleDetails(){
-    localStorage.setItem('currentListing',lId)
-    // redirect('/')
+    // localStorage.setItem('currentListing',lId)
+    navigate(`/currenListing/${lId}`)
   }
 
   return (

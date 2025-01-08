@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
 import { firebaseAuth, firebaseDb } from "../firebaseConfig";
-import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 
 function Profile() {
 
   const [loading, setLoading] = useState<boolean>(true)
-  const [data, setData] = useState()
+  // const [data, setData] = useState()
   const [fullname, setFullName] = useState<string>('');
   const [profilePic, setProfilePic] = useState<string>('')
-  const [heading, setHeading] = useState<string>('');
+  // const [heading, setHeading] = useState<string>('');
   const [desc, setDesc] = useState<string>('')
   const [skills, setSkills] = useState<string[]>([])
 

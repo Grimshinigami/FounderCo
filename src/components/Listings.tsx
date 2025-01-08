@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import ListingShort from "./ListingShort"
-import { collection, doc, getDocs } from "firebase/firestore"
+import { collection, getDocs } from "firebase/firestore"
 import { firebaseDb } from "@/firebaseConfig"
 
  
@@ -27,7 +27,15 @@ function Listings() {
 
       const allListings:ListingL[] = []
       docSnap.forEach((doc)=>{
-        allListings.push({...doc.data(),id:doc.id})
+        allListings.push({
+          id:doc.id,
+          heading: doc.data()?.heading,
+          companyName: doc.data().companyName,
+          description: doc.data().description,
+          compensation: doc.data().compensation,
+          equity: doc.data().equity,
+          applications: doc.data().applications.length,
+        })
       })
       // console.log(allListings)
       setListings(allListings)
@@ -55,13 +63,13 @@ function Listings() {
         />
       </div>
       {loading && 
-        <div className=" w-full border-2 border-black text-center h-full flex justify-center items-center text-3xl">
+        <div className=" w-full text-center h-full flex justify-center items-center text-3xl">
           ...Loading
         </div>}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         
         
-        {!loading && Listings.map((listing,ind) => (
+        {!loading && Listings.map((listing,) => (
           <ListingShort key={listing.id} lId={listing.id} title={listing.heading} compensation={listing.compensation} equity={listing.equity}/>
         ))}
       </div>
