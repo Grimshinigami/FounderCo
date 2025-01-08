@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { firebaseAuth, firebaseDb } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router";
 
 function Profile() {
 
@@ -12,10 +13,12 @@ function Profile() {
   const [desc, setDesc] = useState<string>('')
   const [skills, setSkills] = useState<string[]>([])
 
+  const navigate = useNavigate();
+
   async function getUserInfo () {
     
     firebaseAuth.onAuthStateChanged(async(user)=>{
-      console.log(user)
+      // console.log(user)
 
       const userId = user?.uid;
       const userDocRef = doc(firebaseDb,'users',userId || "");
@@ -40,6 +43,11 @@ function Profile() {
   } 
 
   useEffect(()=>{
+
+    firebaseAuth.onAuthStateChanged(async(user)=>{
+      if(!user)
+        navigate('/auth')
+    })
     
     getUserInfo();
 

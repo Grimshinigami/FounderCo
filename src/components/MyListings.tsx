@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { firebaseAuth, firebaseDb } from "@/firebaseConfig"
 import { collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "firebase/firestore"
 import { useEffect, useState } from "react"
-import { redirect, useNavigate } from "react-router"
+import { useNavigate } from "react-router"
 
 function MyListings() {
     interface Listing {
@@ -20,7 +20,7 @@ function MyListings() {
         applications: number
       }
 
-      const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [loading, setLoading] = useState<boolean>(true)
 
@@ -63,7 +63,7 @@ function MyListings() {
 
             }
             else {
-                redirect('/auth')
+                navigate('/auth')
             }
         })
 
