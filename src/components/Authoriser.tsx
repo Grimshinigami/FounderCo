@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {firebaseAuth, firebaseDb} from '../firebaseConfig'
 import {  GoogleAuthProvider, signInWithPopup } from "firebase/auth"
 import googleIcon from '../assets/google.svg'
-import githubIcon from '../assets/githubIcon.svg'
+// import githubIcon from '../assets/githubIcon.svg'
 import { useNavigate } from "react-router"
 import { doc, getDoc, setDoc } from "firebase/firestore"
 
