@@ -47,6 +47,9 @@ function Header() {
           <a href="/mylistings" className="text-gray-600 hover:text-indigo-600">
             My Listings
           </a>
+          <a href="/createlisting" className="text-gray-600 hover:text-indigo-600">
+            Create Listing
+          </a>
           <a href="/profile" className="text-gray-600 hover:text-indigo-600">
             Profile
           </a>
