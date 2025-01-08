@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { firebaseAuth, firebaseDb } from "../firebaseConfig"
-import { redirect } from "react-router"
+import { redirect, useNavigate } from "react-router"
 import { addDoc, collection, doc, getDoc } from "firebase/firestore"
 
 function CreateListing() {
 
     const [isFounder, setIsFounder] = useState<boolean> (false)
     // const [heading, setHeading] = useState<string> ()
+    const navigate = useNavigate();
 
     useEffect(() => {
       
@@ -77,6 +78,7 @@ function CreateListing() {
             })
 
             console.log("Listing created successfully")
+            navigate('/mylistings')
 
         })
 

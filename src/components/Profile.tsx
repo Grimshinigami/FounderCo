@@ -63,7 +63,7 @@ function Profile() {
 
 
   return (
-    <div className="w-full flex flex-col justify-center items-center mx-auto border-2 border-black">
+    <div className="w-full flex flex-col justify-center items-center mx-auto">
       <h1 className="text-3xl font-bold mb-8">Profile</h1>
       <div className="bg-white p-6 rounded-lg shadow-md md:w-1/2 w-full">
         <div className="flex items-center mb-6">
